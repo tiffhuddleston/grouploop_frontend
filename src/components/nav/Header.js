@@ -21,18 +21,22 @@ export default function Header() {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <NavDropdown title="Account" id="collasible-nav-dropdown">
+          <NavDropdown title="Account" id="collapsible-nav-dropdown">
             <NavDropdown.Item href="/login">Login</NavDropdown.Item>
             <NavDropdown.Item href="/sign-up">Sign Up</NavDropdown.Item>
             <NavDropdown.Item href="/my-account">My Account</NavDropdown.Item>
           </NavDropdown>
-          <NavDropdown title="Circles" id="collasible-nav-dropdown">
+          <NavDropdown title="Circles" id="collapsible-nav-dropdown">
             <NavDropdown.Item href="/my-circles">My Circles</NavDropdown.Item>
-            <NavDropdown.Item href="/all-circles">
-              Explore Circles
+            <NavDropdown.Item href="/add-circle">
+              Manage Circles
             </NavDropdown.Item>
-            <NavDropdown.Item href="/add-circle">Add Circle</NavDropdown.Item>
-            <NavDropdown.Item href="/edit-circle">Edit Circle</NavDropdown.Item>
+          </NavDropdown>
+          <NavDropdown title="Members" id="collapsible-nav-dropdown">
+            <NavDropdown.Item href="/member-list">My Members</NavDropdown.Item>
+            <NavDropdown.Item href="/add-member">
+              Manage Members
+            </NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>

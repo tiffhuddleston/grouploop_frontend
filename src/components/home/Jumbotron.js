@@ -1,13 +1,17 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Jumbotron as Jumbo } from 'react-bootstrap';
 
-export default function Jumbotron() {
+function Jumbotron() {
   return (
-    <Jumbotron fluid>
-      <Container>
-        <h1>Jumbo</h1>
-        <p>I really do like the React</p>
-      </Container>
-    </Jumbotron>
+    <Jumbo fluid>
+      <h1>Welcome to GroupLoop</h1>
+      <p>
+        Stay in the loop with all your special circles. From clubs and meetings
+        to classes and workplaces, GroupLoop makes sure you can always
+        reconnect.
+      </p>
+    </Jumbo>
   );
 }
+
+export default Jumbotron;

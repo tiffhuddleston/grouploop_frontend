@@ -1,1 +1,28 @@
+.card {
+  display: inline-block;
+}
 
+@media (min-width: 600px) {
+  button + button,
+  input + button {
+    margin-left: 1rem;
+  }
+  .gallery {
+    column-count: 2;
+  }
+  .head {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .gallery {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 1400px) {
+  .gallery {
+    column-count: 4;
+  }
+}
