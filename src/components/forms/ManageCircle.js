@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Col, InputGroup, Button, Row, Card } from 'react-bootstrap';
 
-function AddCircle(props) {
+function ManageCircle(props) {
   const { circles, members } = props;
   const handleSubmit = event => {
     event.preventDefault();
@@ -120,4 +120,4 @@ function AddCircle(props) {
   );
 }
 
-export default AddCircle;
+export default ManageCircle;

@@ -9,6 +9,11 @@ function EditCircle(props) {
   }, []);
 
   const url = `https://grouploop-be.herokuapp.com/circles/${match.params.id}`;
+
+  const handleChange = event => {
+    setCircle({ ...circle, [event.target.name]: event.target.value });
+  };
+
   const handleSubmit = event => {
     event.preventDefault();
     let data = {};
@@ -75,8 +80,9 @@ function EditCircle(props) {
                 <Form.Label>Title: </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder={circle.title}
+                  value={circle.title}
                   name="title"
+                  onChange={handleChange}
                 />
               </Form.Group>
             </Col>
@@ -85,8 +91,9 @@ function EditCircle(props) {
                 <Form.Label>Description</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder={circle.description}
+                  value={circle.description}
                   name="description"
+                  onChange={handleChange}
                 />
               </Form.Group>
             </Col>

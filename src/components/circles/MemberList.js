@@ -2,34 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Image, Button, Card, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-export default function MemberList({ match }) {
-  const [members, setMembers] = useState([]);
-
-  useEffect(() => {
-    const url = `https://grouploop-be.herokuapp.com/auditions/${match.params.id}`;
-    fetch(url)
-      .then(response => response.json())
-      .then(response => {
-        response.forEach(member => {
-          console.log(member);
-          fetch(member.circle)
-            .then(response => response.json())
-            .then(response => {
-              member.venue = response;
-              setMembers(members => [...members, member]);
-              console.log(response);
-            });
-        });
-      })
-      .catch(console.error);
-  }, []);
-
-  if (!members) {
-    return null;
-  }
-
+function MemberList({ members }) {
   return (
-    <div class="row" className="gallery">
+    <div className="gallery">
       {members.map(member => (
         <Card
           style={{ width: '20rem', marginBottom: '1rem ' }}
@@ -70,3 +45,25 @@ export default function MemberList({ match }) {
     </div>
   );
 }
+
+export default MemberList;
+
+// useEffect(() => {
+//   const url = `https://grouploop-be.herokuapp.com/members/3`;
+//   fetch(url)
+//     .then(response => response.json())
+//     .then(response => {
+//       console.log(response);
+//       response.forEach(member => {
+//         console.log(member);
+//         fetch(member.circle)
+//           .then(response => response.json())
+//           .then(response => {
+//             member.venue = response;
+//             setMembers(members => [...members, member]);
+//             console.log(response);
+//           });
+//       });
+//     })
+//     .catch(console.error);
+// }, []);

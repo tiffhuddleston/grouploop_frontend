@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Col, InputGroup, Button, Row, Card } from 'react-bootstrap';
+import { Form, Col, Button, Row, Card } from 'react-bootstrap';
 
-function AddMember(props) {
+function ManageMember(props) {
   const { members } = props;
   const handleSubmit = event => {
     event.preventDefault();
@@ -151,4 +151,4 @@ function AddMember(props) {
   );
 }
 
-export default AddMember;
+export default ManageMember;

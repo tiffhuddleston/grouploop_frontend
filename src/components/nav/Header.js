@@ -28,13 +28,13 @@ export default function Header() {
           </NavDropdown>
           <NavDropdown title="Circles" id="collapsible-nav-dropdown">
             <NavDropdown.Item href="/my-circles">My Circles</NavDropdown.Item>
-            <NavDropdown.Item href="/add-circle">
+            <NavDropdown.Item href="/manage-circle">
               Manage Circles
             </NavDropdown.Item>
           </NavDropdown>
           <NavDropdown title="Members" id="collapsible-nav-dropdown">
-            <NavDropdown.Item href="/member-list">My Members</NavDropdown.Item>
-            <NavDropdown.Item href="/add-member">
+            <NavDropdown.Item href="/member-list">Member List</NavDropdown.Item>
+            <NavDropdown.Item href="/manage-member">
               Manage Members
             </NavDropdown.Item>
           </NavDropdown>

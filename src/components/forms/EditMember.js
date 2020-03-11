@@ -10,6 +10,11 @@ function EditMember(props) {
   }, []);
 
   const url = `https://grouploop-be.herokuapp.com/members`;
+
+  const handleChange = event => {
+    setMember({ ...member, [event.target.name]: event.target.value });
+  };
+
   const handleSubmit = event => {
     event.preventDefault();
 
@@ -86,8 +91,9 @@ function EditMember(props) {
                 <Form.Label>Name: </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder={member.name}
+                  value={member.name}
                   name="name"
+                  onChange={handleChange}
                 />
               </Form.Group>
             </Col>
@@ -96,8 +102,9 @@ function EditMember(props) {
                 <Form.Label>Github</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder={member.github}
+                  value={member.github}
                   name="github"
+                  onChange={handleChange}
                 />
               </Form.Group>
             </Col>
@@ -108,8 +115,9 @@ function EditMember(props) {
                 <Form.Label>LinkedIn</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder={member.linkedin}
+                  value={member.linkedin}
                   name="linkedin"
+                  onChange={handleChange}
                 />
               </Form.Group>
             </Col>
@@ -118,8 +126,9 @@ function EditMember(props) {
                 <Form.Label>Twitter</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder={member.twitter}
+                  value={member.twitter}
                   name="twitter"
+                  onChange={handleChange}
                 />
               </Form.Group>
             </Col>
@@ -128,8 +137,9 @@ function EditMember(props) {
                 <Form.Label>Instagram</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder={member.instagram}
+                  value={member.instagram}
                   name="instagram"
+                  onChange={handleChange}
                 />
               </Form.Group>
             </Col>
@@ -139,8 +149,9 @@ function EditMember(props) {
               <Form.Label>Facebook</Form.Label>
               <Form.Control
                 type="text"
-                placeholder={member.facebook}
+                value={member.facebook}
                 name="facebook"
+                onChange={handleChange}
               />
             </Form.Group>
           </Col>
