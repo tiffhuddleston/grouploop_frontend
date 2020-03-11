@@ -19,7 +19,7 @@ function ManageMember(props) {
       })
       .then(data => {
         console.log('Success:', data);
-        window.location.href = 'https://localhost:3000/member-list';
+        window.location.href = 'https://grouploop-fe.herokuapp.com/member-list';
       })
       .catch(error => {
         console.error('Error:', error);

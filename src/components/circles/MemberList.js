@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Image, Button, Card, Col, Row } from 'react-bootstrap';
+import { Button, Card, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function MemberList({ members }) {

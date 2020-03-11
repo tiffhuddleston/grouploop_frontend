@@ -29,7 +29,7 @@ function ManageCircle(props) {
       })
       .then(data => {
         console.log('Success:', data);
-        window.location.href = 'https://localhost:3000/';
+        window.location.href = 'https://grouploop-fe.herokuapp.com/my-circles';
       })
       .catch(error => {
         console.error('Error:', error);

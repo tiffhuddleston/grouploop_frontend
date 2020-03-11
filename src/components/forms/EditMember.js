@@ -51,7 +51,7 @@ function EditMember(props) {
         response.json();
       })
       .then(data => {
-        window.location.href = 'https://localhost:3000/member-list';
+        window.location.href = 'https://grouploop-fe.herokuapp.com/member-list';
       })
       .catch(error => {
         console.error('Error:', error);
@@ -75,7 +75,7 @@ function EditMember(props) {
       }
     })
       .then(response => {
-        window.location.href = 'https://localhost:3000/member-list';
+        window.location.href = 'https://grouploop-fe.herokuapp.com/member-list';
       })
       .catch(console.error);
   };

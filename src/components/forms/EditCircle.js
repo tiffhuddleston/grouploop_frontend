@@ -43,7 +43,7 @@ function EditCircle(props) {
         response.json();
       })
       .then(data => {
-        window.location.href = 'https://localhost:3000/add-circle';
+        window.location.href = 'https://grouploop-fe.herokuapp.com/add-circle';
       })
       .catch(error => {
         console.error('Error:', error);
@@ -66,7 +66,7 @@ function EditCircle(props) {
     })
       .then(response => response.json())
       .then(response => {
-        window.location.href = 'https://localhost:3000/add-circle';
+        window.location.href = 'https://grouploop-fe.herokuapp.com/add-circle';
       })
       .catch(console.error);
   };
