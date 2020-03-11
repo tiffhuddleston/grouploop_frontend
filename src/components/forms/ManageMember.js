@@ -4,19 +4,6 @@ import { Form, Col, Button, Row, Card } from 'react-bootstrap';
 
 function ManageMember(props) {
   const { members } = props;
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    let data = {};
-    data.name = event.target['name'].value;
-    data.github = event.target['github'].value;
-    data.linkedin = event.target['linkedin'].value;
-    data.twitter = event.target['twitter'].value;
-    data.instagram = event.target['instagram'].value;
-    data.facebook = event.target['facebook'].value;
-
-    postNewMember(data);
-  };
 
   const postNewMember = data => {
     const url = 'https://grouploop-be.herokuapp.com/members/';
@@ -32,16 +19,30 @@ function ManageMember(props) {
       })
       .then(data => {
         console.log('Success:', data);
-        window.location.href = 'https://localhost:3000/';
+        window.location.href = 'https://localhost:3000/member-list';
       })
       .catch(error => {
         console.error('Error:', error);
       });
   };
 
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    let data = {};
+    data.name = event.target['name'].value;
+    data.github = event.target['github'].value;
+    data.linkedin = event.target['linkedin'].value;
+    data.twitter = event.target['twitter'].value;
+    data.instagram = event.target['instagram'].value;
+    data.facebook = event.target['facebook'].value;
+
+    postNewMember(data);
+  };
+
   return (
     <>
-      <div className="postMember">
+      <div className="manageMember">
         <Form onSubmit={handleSubmit}>
           <Form.Row>
             <Col>

@@ -11,7 +11,7 @@ function CircleList({ circles, member }) {
     <div className="gallery">
       {circles.map(circle => (
         <div key={circle.id} className="circle-info">
-          <Link to="/member-list">
+          <Link to="/circle-members">
             <h3>{circle.title}</h3>
           </Link>
           <p>{circle.description}</p>

@@ -51,7 +51,7 @@ function EditMember(props) {
         response.json();
       })
       .then(data => {
-        window.location.href = 'https://localhost:3000/edit-member';
+        window.location.href = 'https://localhost:3000/member-list';
       })
       .catch(error => {
         console.error('Error:', error);
@@ -74,9 +74,8 @@ function EditMember(props) {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => response.json())
       .then(response => {
-        window.location.href = 'https://localhost:3000/edit-member';
+        window.location.href = 'https://localhost:3000/member-list';
       })
       .catch(console.error);
   };
