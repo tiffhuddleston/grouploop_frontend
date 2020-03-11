@@ -9,9 +9,11 @@ function EditMember(props) {
     getMember();
   }, []);
 
-  const url = `https://grouploop-be.herokuapp.com/edit-member/${match.params.id}`;
+  const url = `https://grouploop-be.herokuapp.com/members`;
   const handleSubmit = event => {
     event.preventDefault();
+
+    console.log(match);
 
     let data = {};
     data.name = event.target['name'].value;
@@ -33,7 +35,7 @@ function EditMember(props) {
   };
 
   const updateMember = data => {
-    fetch(url, {
+    fetch(`https://grouploop-be.herokuapp.com/members/${match.params.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -44,7 +46,7 @@ function EditMember(props) {
         response.json();
       })
       .then(data => {
-        window.location.href = 'https://localhost:3000/member-list';
+        window.location.href = 'https://localhost:3000/edit-member';
       })
       .catch(error => {
         console.error('Error:', error);
@@ -52,7 +54,7 @@ function EditMember(props) {
   };
 
   function getMember() {
-    fetch(url)
+    fetch(`https://grouploop-be.herokuapp.com/members/${match.params.id}`)
       .then(response => response.json())
       .then(response => {
         setMember(response);
@@ -60,7 +62,8 @@ function EditMember(props) {
       .catch(console.error);
   }
   const deleteMember = event => {
-    fetch(url, {
+    fetch(`https://grouploop-be.herokuapp.com/members/${match.params.id}`, {
+      crossDomain: true,
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -68,10 +71,9 @@ function EditMember(props) {
     })
       .then(response => response.json())
       .then(response => {
-        window.location.href = 'https://localhost:3000/member-list';
+        window.location.href = 'https://localhost:3000/edit-member';
       })
       .catch(console.error);
-    console.log(member[0]);
   };
 
   return (
@@ -80,7 +82,7 @@ function EditMember(props) {
         <Form onSubmit={handleSubmit}>
           <Form.Row>
             <Col>
-              <Form.Group controlId="forName">
+              <Form.Group>
                 <Form.Label>Name: </Form.Label>
                 <Form.Control
                   type="text"
@@ -116,7 +118,7 @@ function EditMember(props) {
                 <Form.Label>Twitter</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter Twitter account url"
+                  placeholder={member.twitter}
                   name="twitter"
                 />
               </Form.Group>
@@ -126,7 +128,7 @@ function EditMember(props) {
                 <Form.Label>Instagram</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Enter Instagram account url"
+                  placeholder={member.instagram}
                   name="instagram"
                 />
               </Form.Group>
@@ -137,7 +139,7 @@ function EditMember(props) {
               <Form.Label>Facebook</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter Facebook account url"
+                placeholder={member.facebook}
                 name="facebook"
               />
             </Form.Group>

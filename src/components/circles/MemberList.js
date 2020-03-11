@@ -2,29 +2,35 @@ import React, { useState, useEffect } from 'react';
 import { Image, Button, Card, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-export default function MemberList({ circles, match }) {
-  const [memberData, setData] = useState(null);
-  const [showModal, setModal] = useState(false);
+export default function MemberList({ match }) {
+  const [members, setMembers] = useState([]);
 
   useEffect(() => {
-    fetch(`https://grouploop-be.herokuapp.com/members/`)
+    const url = `https://grouploop-be.herokuapp.com/auditions/${match.params.id}`;
+    fetch(url)
       .then(response => response.json())
       .then(response => {
-        setData(response);
+        response.forEach(member => {
+          console.log(member);
+          fetch(member.circle)
+            .then(response => response.json())
+            .then(response => {
+              member.venue = response;
+              setMembers(members => [...members, member]);
+              console.log(response);
+            });
+        });
       })
       .catch(console.error);
   }, []);
 
-  if (!memberData) {
+  if (!members) {
     return null;
   }
 
-  console.log(memberData);
-  console.log(memberData.name);
-
   return (
     <div class="row" className="gallery">
-      {memberData.map(member => (
+      {members.map(member => (
         <Card
           style={{ width: '20rem', marginBottom: '1rem ' }}
           key={member._id}
@@ -63,20 +69,4 @@ export default function MemberList({ circles, match }) {
       ))}
     </div>
   );
-}
-
-{
-  /* <div className="gallery">
-      {memberData.map(members => (
-        <div key={members.id} className="members-info">
-          <h3>{members.name}</h3>
-
-          <p>{members.github}</p>
-          <p>{members.linkedin}</p>
-          <p>{members.facebook}</p>
-          <p>{members.instagram}</p>
-          <p>{members.twitter}</p>
-        </div>
-      ))}
-    </div> */
 }

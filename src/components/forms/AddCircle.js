@@ -88,14 +88,14 @@ function AddCircle(props) {
         {circles.map(event => (
           <Card
             style={{ width: '20rem', marginBottom: '1rem ' }}
-            key={event._id}
+            key={event.id}
           >
             <Col className="circle">
               <div className="circleDetails">
                 <Card.Body>
                   <Row>
                     <Col>
-                      <Card.Title>{event.name}</Card.Title>
+                      <Card.Title>{event.title}</Card.Title>
                     </Col>
                   </Row>
                   <Row>

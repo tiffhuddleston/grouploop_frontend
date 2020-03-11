@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Form, Col, InputGroup, Button } from 'react-bootstrap';
 
 function EditCircle(props) {
-  const { match } = props;
+  const { match, members } = props;
   const [circle, setCircle] = useState([]);
   useEffect(() => {
     getCircle();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const url = `https://grouploop-be.herokuapp.com/edit-circle/${match.params.id}`;
+
+  const url = `https://grouploop-be.herokuapp.com/circles/${match.params.id}`;
   const handleSubmit = event => {
     event.preventDefault();
     let data = {};
@@ -75,7 +75,7 @@ function EditCircle(props) {
                 <Form.Label>Title: </Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder={circle.name}
+                  placeholder={circle.title}
                   name="title"
                 />
               </Form.Group>
@@ -93,13 +93,15 @@ function EditCircle(props) {
           </Form.Row>
           <Form.Row>
             <Col>
-              <Form.Group>
-                <Form.Label>Members</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder={circle.member}
-                  name="Member"
-                />
+              <Form.Group className="dropdown-members">
+                <Form.Label>Add Members</Form.Label>
+                <Form.Control as="select" name="Member">
+                  {members.map(member => (
+                    <option key={member.value} value={member.value}>
+                      {member.name}
+                    </option>
+                  ))}{' '}
+                </Form.Control>
               </Form.Group>
             </Col>
           </Form.Row>

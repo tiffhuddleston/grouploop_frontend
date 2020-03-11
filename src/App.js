@@ -126,7 +126,7 @@ function App() {
         exact
         path="/edit-circle/:id"
         render={routerProps => (
-          <EditCircle circles={circles} match={routerProps.match} />
+          <EditCircle members={members} match={routerProps.match} />
         )}
       />
       <Route
@@ -145,7 +145,7 @@ function App() {
       />
       <Route
         exact
-        path="/member-list"
+        path="/member-list/:id"
         render={routerProps => (
           <MemberList
             members={members}
