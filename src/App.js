@@ -85,7 +85,7 @@ function App() {
       />
       <Route
         exact
-        path="/circle-members/"
+        path="/circle-members/:circle"
         render={routerProps => (
           <CircleMembers
             members={members}

@@ -4,20 +4,28 @@ import { Link } from 'react-router-dom';
 
 function CircleMembers({ match }) {
   const [members, setMembers] = useState([]);
-  useEffect(() => {
+
+  const getMembers = circle => {
     fetch(`https://grouploop-be.herokuapp.com/circles/`)
       .then(response => response.json())
       .then(response => {
-        response[0].member.forEach(member => {
+        const circleMembers = response.find(item => item.id == circle);
+        console.log(circleMembers);
+        circleMembers.member.forEach(member => {
           fetch(member)
             .then(response => response.json())
             .then(response => {
               setMembers(members => [...members, response]);
-            });
+            })
+            .catch(console.error);
         });
       })
 
       .catch(console.error);
+  };
+
+  useEffect(() => {
+    getMembers(match.params.circle);
   }, []);
 
   if (!members) {

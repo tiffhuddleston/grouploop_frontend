@@ -20,7 +20,6 @@ function ManageCircle(props) {
         response.json();
       })
       .then(data => {
-        console.log('Success:', data);
         history.push('/my-circles');
       })
       .catch(error => {
@@ -37,6 +36,7 @@ function ManageCircle(props) {
 
     postNewCircle(data);
   };
+
   const handleChange = e => {
     setMember(e.target.value);
   };

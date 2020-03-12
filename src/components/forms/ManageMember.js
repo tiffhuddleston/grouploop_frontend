@@ -19,7 +19,6 @@ function ManageMember(props) {
         response.json();
       })
       .then(data => {
-        console.log('Success:', data);
         history.push('/member-list');
       })
       .catch(error => {
