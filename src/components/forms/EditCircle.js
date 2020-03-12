@@ -72,7 +72,7 @@ function EditCircle(props) {
     })
       .then(response => response.json())
       .then(response => {
-        history.push('/add-circle');
+        history.push('/my-circles');
       })
       .catch(console.error);
   };
