@@ -32,7 +32,6 @@ function ManageCircle(props) {
     let data = {};
     data.title = event.target['title'].value;
     data.description = event.target['description'].value;
-    data.member = member;
 
     postNewCircle(data);
   };
@@ -68,21 +67,6 @@ function ManageCircle(props) {
               </Form.Group>
             </Col>
           </Form.Row>
-          <Form.Row>
-            <Col>
-              <Form.Group className="dropdown-members">
-                <Form.Label>Add Members</Form.Label>
-                <Form.Control onChange={handleChange} as="select" name="Member">
-                  {members.map(member => (
-                    <option key={member.value} value={member.value}>
-                      {member.name}
-                    </option>
-                  ))}
-                </Form.Control>
-              </Form.Group>
-            </Col>
-          </Form.Row>
-
           <Button variant="outline-success" type="submit">
             Submit
           </Button>
