@@ -4,8 +4,7 @@ import { Form, Col, InputGroup, Button, Row, Card } from 'react-bootstrap';
 
 function ManageCircle(props) {
   let history = useHistory();
-  const { circles, members } = props;
-  const [member, setMember] = useState();
+  const { circles } = props;
 
   const postNewCircle = data => {
     const url = 'https://grouploop-be.herokuapp.com/circles';
@@ -34,10 +33,6 @@ function ManageCircle(props) {
     data.description = event.target['description'].value;
 
     postNewCircle(data);
-  };
-
-  const handleChange = e => {
-    setMember(e.target.value);
   };
 
   return (
