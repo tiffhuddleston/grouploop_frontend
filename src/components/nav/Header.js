@@ -7,13 +7,11 @@ import {
   Button,
   FormControl
 } from 'react-bootstrap';
-import Login from '../auth/Login';
 
 export default function Header() {
   return (
     <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand href="/">GroupLoop</Navbar.Brand>
-      <Login />
       <Form inline>
         <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
         <Button type="submit">Submit</Button>

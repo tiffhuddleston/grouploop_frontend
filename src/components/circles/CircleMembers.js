@@ -10,7 +10,6 @@ function CircleMembers({ match }) {
       .then(response => response.json())
       .then(response => {
         const circleMembers = response.find(item => item.id == circle);
-        console.log(circleMembers);
         circleMembers.member.forEach(member => {
           fetch(member)
             .then(response => response.json())

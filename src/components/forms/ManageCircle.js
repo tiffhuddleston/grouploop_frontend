@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Form, Col, InputGroup, Button, Row, Card } from 'react-bootstrap';
 
@@ -7,7 +7,7 @@ function ManageCircle(props) {
   const { circles } = props;
 
   const postNewCircle = data => {
-    const url = 'https://grouploop-be.herokuapp.com/circles';
+    const url = 'https://grouploop-be.herokuapp.com/circles/';
     fetch(url, {
       method: 'POST',
       headers: {
@@ -69,28 +69,28 @@ function ManageCircle(props) {
       </div>
       <h3 id="postedCirclesHeader">Posted Circles</h3>
       <div className="circleGrid">
-        {circles.map(event => (
+        {circles.map(circle => (
           <Card
             style={{ width: '20rem', marginBottom: '1rem ' }}
-            key={event.id}
+            key={circle.id}
           >
             <Col className="circle">
               <div className="circleDetails">
                 <Card.Body>
                   <Row>
                     <Col>
-                      <Card.Title>{event.title}</Card.Title>
+                      <Card.Title>{circle.title}</Card.Title>
                     </Col>
                   </Row>
                   <Row>
                     <Col>
-                      <Card.Text>{event.description}</Card.Text>
+                      <Card.Text>{circle.description}</Card.Text>
                     </Col>
                   </Row>
                   <Row>
                     <Col>
                       <Button variant="outline-info">
-                        <Link to={`/edit-circle/${event.id}`}> Edit</Link>
+                        <Link to={`/edit-circle/${circle.id}`}> Edit</Link>
                       </Button>
                     </Col>
                   </Row>
