@@ -6,16 +6,6 @@ function ManageCircle(props) {
   let history = useHistory();
   const { circles, members } = props;
   const [member, setMember] = useState();
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    let data = {};
-    data.title = event.target['title'].value;
-    data.description = event.target['description'].value;
-    data.member = member;
-
-    postNewCircle(data);
-  };
 
   const postNewCircle = data => {
     const url = 'https://grouploop-be.herokuapp.com/circles';
@@ -36,6 +26,16 @@ function ManageCircle(props) {
       .catch(error => {
         console.error('Error:', error);
       });
+  };
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    let data = {};
+    data.title = event.target['title'].value;
+    data.description = event.target['description'].value;
+    data.member = member;
+
+    postNewCircle(data);
   };
   const handleChange = e => {
     setMember(e.target.value);
