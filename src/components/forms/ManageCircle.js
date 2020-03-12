@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Form, Col, InputGroup, Button, Row, Card } from 'react-bootstrap';
 
 function ManageCircle(props) {
+  let history = useHistory();
   const { circles, members } = props;
+  const [member, setMember] = useState();
   const handleSubmit = event => {
     event.preventDefault();
 
     let data = {};
     data.title = event.target['title'].value;
     data.description = event.target['description'].value;
-    data.member = event.target['member'].value;
+    data.member = member;
 
     postNewCircle(data);
   };
@@ -29,11 +31,14 @@ function ManageCircle(props) {
       })
       .then(data => {
         console.log('Success:', data);
-        window.location.href = 'https://grouploop-fe.herokuapp.com/my-circles';
+        history.push('/my-circles');
       })
       .catch(error => {
         console.error('Error:', error);
       });
+  };
+  const handleChange = e => {
+    setMember(e.target.value);
   };
 
   return (
@@ -67,12 +72,12 @@ function ManageCircle(props) {
             <Col>
               <Form.Group className="dropdown-members">
                 <Form.Label>Add Members</Form.Label>
-                <Form.Control as="select" name="Member">
+                <Form.Control onChange={handleChange} as="select" name="Member">
                   {members.map(member => (
                     <option key={member.value} value={member.value}>
                       {member.name}
                     </option>
-                  ))}{' '}
+                  ))}
                 </Form.Control>
               </Form.Group>
             </Col>

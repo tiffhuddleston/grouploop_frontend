@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Form, Col, Button, Row, Card } from 'react-bootstrap';
 
 function ManageMember(props) {
+  let history = useHistory();
   const { members } = props;
 
   const postNewMember = data => {
@@ -19,7 +20,7 @@ function ManageMember(props) {
       })
       .then(data => {
         console.log('Success:', data);
-        window.location.href = 'https://grouploop-fe.herokuapp.com/member-list';
+        history.push('/member-list');
       })
       .catch(error => {
         console.error('Error:', error);

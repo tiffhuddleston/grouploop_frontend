@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Col, InputGroup, Button } from 'react-bootstrap';
+import { Form, Col, Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 function EditMember(props) {
+  let history = useHistory();
+
   const { match } = props;
   const [member, setMember] = useState([]);
 
@@ -51,7 +54,7 @@ function EditMember(props) {
         response.json();
       })
       .then(data => {
-        window.location.href = 'https://grouploop-fe.herokuapp.com/member-list';
+        history.push('/member-list');
       })
       .catch(error => {
         console.error('Error:', error);
@@ -75,7 +78,7 @@ function EditMember(props) {
       }
     })
       .then(response => {
-        window.location.href = 'https://grouploop-fe.herokuapp.com/member-list';
+        history.push('/member-list');
       })
       .catch(console.error);
   };

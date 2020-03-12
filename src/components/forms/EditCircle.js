@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Col, InputGroup, Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 function EditCircle(props) {
+  let history = useHistory();
+
   const { match, members } = props;
   const [circle, setCircle] = useState([]);
+  const [member, setMember] = useState();
+
   useEffect(() => {
     getCircle();
   }, []);
@@ -11,7 +16,8 @@ function EditCircle(props) {
   const url = `https://grouploop-be.herokuapp.com/circles/${match.params.id}`;
 
   const handleChange = event => {
-    setCircle({ ...circle, [event.target.name]: event.target.value });
+    setCircle({ ...circle, [event.target.title]: event.target.value });
+    setMember({ ...member, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = event => {
@@ -19,7 +25,7 @@ function EditCircle(props) {
     let data = {};
     data.title = event.target['title'].value;
     data.description = event.target['description'].value;
-    data.member = event.target['member'].value;
+    data.member = member;
     for (let propName in data) {
       if (
         data[propName] === null ||
@@ -43,7 +49,7 @@ function EditCircle(props) {
         response.json();
       })
       .then(data => {
-        window.location.href = 'https://grouploop-fe.herokuapp.com/add-circle';
+        history.push('/my-circles');
       })
       .catch(error => {
         console.error('Error:', error);
@@ -66,7 +72,7 @@ function EditCircle(props) {
     })
       .then(response => response.json())
       .then(response => {
-        window.location.href = 'https://grouploop-fe.herokuapp.com/add-circle';
+        history.push('/add-circle');
       })
       .catch(console.error);
   };
@@ -102,12 +108,13 @@ function EditCircle(props) {
             <Col>
               <Form.Group className="dropdown-members">
                 <Form.Label>Add Members</Form.Label>
-                <Form.Control as="select" name="Member">
+                <Form.Control as="select" name="Member" onChange={handleChange}>
+                  <option>Choose One</option>
                   {members.map(member => (
                     <option key={member.value} value={member.value}>
                       {member.name}
                     </option>
-                  ))}{' '}
+                  ))}
                 </Form.Control>
               </Form.Group>
             </Col>
