@@ -55,3 +55,17 @@ If you wish to contribute to this project, please open an issue to this reposito
 [Dropdown Data Binding](https://www.carlrippon.com/react-drop-down-data-binding/) - Used to map dropdown member list
 
 Random User Image by Stephanie Edwards from Pixabay
+
+## BIG THANKS
+
+Thanks to Daphne Mintz for being there with me. We did it alone together!
+
+Thanks to Qusai Fares for his help with dropdown menus.
+
+Thanks to Jaimie Lowe for always taking time to answer a question.
+
+Thanks to Daisy, Asha, and Chris for trying to help me with my PUT features.
+
+Thanks to Jennifer Meade for being super supportive and helpful.
+
+Thanks to all my GA classmates. They made this experience so awesome.

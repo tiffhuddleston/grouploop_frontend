@@ -12,10 +12,7 @@ export default function Header() {
   return (
     <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand href="/">GroupLoop</Navbar.Brand>
-      <Form inline>
-        <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
-        <Button type="submit">Submit</Button>
-      </Form>
+
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
@@ -41,3 +38,7 @@ export default function Header() {
     </Navbar>
   );
 }
+/* <Form inline>
+  <FormControl type="text" placeholder="Search" className=" mr-sm-2" />
+  <Button type="submit">Submit</Button>
+</Form> */

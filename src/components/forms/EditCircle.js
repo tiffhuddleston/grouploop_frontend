@@ -4,43 +4,51 @@ import { useHistory } from 'react-router-dom';
 
 function EditCircle(props) {
   let history = useHistory();
+  const initialState = {
+    id: '',
+    title: '',
+    description: '',
+    member: []
+  };
 
   const { match, members } = props;
-  const [circle, setCircle] = useState([]);
+  const [circle, setCircle] = useState(initialState);
   const [member, setMember] = useState();
   const [memberUrl, setMemberUrl] = useState('');
 
   useEffect(() => {
-    console.log(members);
     getCircle();
   }, []);
 
   const url = `https://grouploop-be.herokuapp.com/circles/${match.params.id}`;
 
   const handleChange = event => {
-    setCircle({ ...circle, [event.target.title]: event.target.value });
+    setCircle({ ...circle, [event.target.name]: event.target.value });
     setMember({ ...member, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = event => {
-    console.log(members, member);
     event.preventDefault();
     let selectedMember = members.find(item => item.name === member.Member);
     console.log(selectedMember);
-    let data = {};
-    data.title = event.target['title'].value;
-    data.description = event.target['description'].value;
-    data.member = `https://grouploop-be.herokuapp.com/members/${selectedMember.id}`;
-    for (let propName in data) {
-      if (
-        data[propName] === null ||
-        data[propName] === '' ||
-        data[propName] === undefined
-      ) {
-        delete data[propName];
-      }
-    }
-    setMemberUrl(data.member);
+    // let data = {};
+    // data.title = event.target['title'].value;
+    // data.description = event.target['description'].value;
+    // data.member = `https://grouploop-be.herokuapp.com/members/${selectedMember.id}`;
+    // for (let propName in data) {
+    //   if (
+    //     data[propName] === null ||
+    //     data[propName] === '' ||
+    //     data[propName] === undefined
+    //   ) {
+    //     delete data[propName];
+    //   }
+    // }
+    // setMemberUrl(data.member);
+    const data = {
+      ...circle,
+      member: []
+    };
     updateCircle(data);
   };
 
@@ -55,9 +63,9 @@ function EditCircle(props) {
       .then(response => {
         response.json();
       })
-      .then(data => {
-        circle.member.push(memberUrl);
-      })
+      // .then(data => {
+      //   circle.member.push(memberUrl);
+      // })
       .then(data => {
         history.push('/my-circles');
       })
@@ -87,6 +95,9 @@ function EditCircle(props) {
       })
       .catch(console.error);
   };
+  if (!circle) {
+    return null;
+  }
   return (
     <>
       <div className="postCircle">
@@ -122,7 +133,7 @@ function EditCircle(props) {
                 <Form.Control as="select" name="Member" onChange={handleChange}>
                   <option>Choose One</option>
                   {members.map(member => (
-                    <option key={member.value} value={member.value}>
+                    <option key={member.id} value={member.value}>
                       {member.name}
                     </option>
                   ))}
