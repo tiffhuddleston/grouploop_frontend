@@ -141,10 +141,15 @@ function EditCircle(props) {
               </Form.Group>
             </Col>
           </Form.Row>
-          <Button variant="outline-success" type="submit">
+          <Button variant="warning" type="submit">
             Submit
           </Button>
-          <Button id="deleteCircleButton" onClick={deleteCircle}>
+          <Button
+            variant="danger
+          "
+            id="deleteCircleButton"
+            onClick={deleteCircle}
+          >
             Delete Circle
           </Button>
         </Form>

@@ -157,10 +157,14 @@ function EditMember(props) {
               />
             </Form.Group>
           </Col>
-          <Button variant="outline-success" type="submit">
+          <Button variant="warning" type="submit">
             Submit
           </Button>
-          <Button id="deleteMemberButton" onClick={deleteMember}>
+          <Button
+            variant="danger"
+            id="deleteMemberButton"
+            onClick={deleteMember}
+          >
             Delete Member
           </Button>
         </Form>

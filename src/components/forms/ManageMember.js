@@ -110,7 +110,7 @@ function ManageMember(props) {
               />
             </Form.Group>
           </Col>
-          <Button variant="outline-success" type="submit">
+          <Button variant="warning" type="submit">
             Submit
           </Button>
         </Form>
@@ -137,7 +137,7 @@ function ManageMember(props) {
                   </Row>
                   <Row>
                     <Col>
-                      <Button variant="outline-info">
+                      <Button variant="warning">
                         <Link to={`/edit-member/${member.id}`}> Edit</Link>
                       </Button>
                     </Col>

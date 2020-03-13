@@ -62,7 +62,7 @@ function ManageCircle(props) {
               </Form.Group>
             </Col>
           </Form.Row>
-          <Button variant="outline-success" type="submit">
+          <Button variant="warning" type="submit">
             Submit
           </Button>
         </Form>
@@ -89,7 +89,7 @@ function ManageCircle(props) {
                   </Row>
                   <Row>
                     <Col>
-                      <Button variant="outline-info">
+                      <Button variant="warning">
                         <Link to={`/edit-circle/${circle.id}`}> Edit</Link>
                       </Button>
                     </Col>
