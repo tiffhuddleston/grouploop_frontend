@@ -42,3 +42,7 @@ body {
 .circleLink:hover {
   color: #7986cb;
 }
+
+.circle-info {
+  break-inside: avoid-column;
+}
