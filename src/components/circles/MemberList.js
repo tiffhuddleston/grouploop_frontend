@@ -7,6 +7,7 @@ import {
   ListGroup,
   ListGroupItem
 } from 'react-bootstrap';
+import UserPic from '../images/ProfileImage.svg';
 import { Link } from 'react-router-dom';
 
 function MemberList({ members }) {
@@ -18,7 +19,7 @@ function MemberList({ members }) {
           key={member._id}
         >
           <Col className="member">
-            <Card.Img variant="top" src={member.imageUrl} alt="member" />
+            <Card.Img variant="top" src={UserPic} alt="member" />
             <div className="memberDetails">
               <Card.Body>
                 <Row>

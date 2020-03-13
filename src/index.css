@@ -26,3 +26,11 @@
     column-count: 4;
   }
 }
+
+.jumbotron {
+  background-color: #7986cb;
+}
+
+body {
+  background-color: #979ec5;
+}

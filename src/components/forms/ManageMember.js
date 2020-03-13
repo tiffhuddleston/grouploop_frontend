@@ -1,4 +1,5 @@
 import React from 'react';
+import UserPic from '../images/ProfileImage.svg';
 import { Link, useHistory } from 'react-router-dom';
 import { Form, Col, Button, Row, Card } from 'react-bootstrap';
 
@@ -122,7 +123,6 @@ function ManageMember(props) {
             key={member._id}
           >
             <Col className="member">
-              <Card.Img variant="top" src={member.imageUrl} alt="member" />
               <div className="memberDetails">
                 <Card.Body>
                   <Row>

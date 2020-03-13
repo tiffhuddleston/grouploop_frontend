@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Col, InputGroup, Button } from 'react-bootstrap';
+import { Form, Col, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
 function EditCircle(props) {
@@ -8,8 +8,10 @@ function EditCircle(props) {
   const { match, members } = props;
   const [circle, setCircle] = useState([]);
   const [member, setMember] = useState();
+  const [memberUrl, setMemberUrl] = useState('');
 
   useEffect(() => {
+    console.log(members);
     getCircle();
   }, []);
 
@@ -21,11 +23,14 @@ function EditCircle(props) {
   };
 
   const handleSubmit = event => {
+    console.log(members, member);
     event.preventDefault();
+    let selectedMember = members.find(item => item.name === member.Member);
+    console.log(selectedMember);
     let data = {};
     data.title = event.target['title'].value;
     data.description = event.target['description'].value;
-    data.member = member;
+    data.member = `https://grouploop-be.herokuapp.com/members/${selectedMember.id}`;
     for (let propName in data) {
       if (
         data[propName] === null ||
@@ -35,8 +40,10 @@ function EditCircle(props) {
         delete data[propName];
       }
     }
+    setMemberUrl(data.member);
     updateCircle(data);
   };
+
   const updateCircle = data => {
     fetch(url, {
       method: 'PUT',
@@ -49,12 +56,16 @@ function EditCircle(props) {
         response.json();
       })
       .then(data => {
+        circle.member.push(memberUrl);
+      })
+      .then(data => {
         history.push('/my-circles');
       })
       .catch(error => {
         console.error('Error:', error);
       });
   };
+
   function getCircle() {
     fetch(url)
       .then(response => response.json())
@@ -65,12 +76,12 @@ function EditCircle(props) {
   }
   const deleteCircle = event => {
     fetch(url, {
+      crossDomain: true,
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => response.json())
       .then(response => {
         history.push('/my-circles');
       })
