@@ -32,27 +32,27 @@ function MemberList({ members }) {
                     <ListGroup className="list-group-flush">
                       <ListGroupItem>
                         {!member.linkedin ? null : (
-                          <a href="{member.linkedin}">LinkedIn</a>
+                          <a href={member.linkedin}>LinkedIn</a>
                         )}
                       </ListGroupItem>
                       <ListGroupItem>
                         {!member.facebook ? null : (
-                          <a href="{member.facebook}">Facebook</a>
+                          <a href={member.facebook}>Facebook</a>
                         )}
                       </ListGroupItem>
                       <ListGroupItem>
                         {!member.twitter ? null : (
-                          <a href="{member.twitter}">Twitter</a>
+                          <a href={member.twitter}>Twitter</a>
                         )}
                       </ListGroupItem>
                       <ListGroupItem>
                         {!member.github ? null : (
-                          <a href="{member.github}">Github</a>
+                          <a href={member.github}>Github</a>
                         )}
                       </ListGroupItem>
                       <ListGroupItem>
                         {!member.instagram ? null : (
-                          <a href="{member.instagram}">Instagram</a>
+                          <a href={member.instagram}>Instagram</a>
                         )}
                       </ListGroupItem>
                     </ListGroup>
